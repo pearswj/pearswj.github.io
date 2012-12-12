@@ -64,7 +64,7 @@ body {
 }
 
 
-ul {
+#menu ul {
 	list-style:none;
 	padding:0;
 	margin:0;
@@ -84,15 +84,33 @@ ul {
 /* Headings */
 
 h1 {
-	font-size:2em;
+	font-size:2em; 
 	font-weight:normal;
 }
+
+
+h1 a {
+	font-size:1em !important; 
+	font-weight:normal !important;
+    cursor: default;
+}
+
 
 
 h2, h3, h4, h5, th {
 	font-size:1.3em;
 	font-weight:normal;
 	margin-bottom:4px;
+}
+
+
+h3, h4, h5, th {
+    font-size:1.2em;
+}
+
+
+h3 {
+    border-bottom: dashed 1px #999;
 }
 
 
@@ -105,8 +123,8 @@ p {
 
 
 pre, code {  
-	font-family:"Courier New", Courier, monospace; 
-	font-size:1em; 
+    font-family: Menlo, "Courier New", monospace;
+    font-size: 11px;
 	line-height:normal;
 }
 
@@ -140,6 +158,16 @@ a:link:visited {
 }
 
 
+/*h1 a,
+h1 a:hover, 
+h1 a:active,
+h1 a:visited,
+h1 a:link:visited {
+	font-size:1em;
+	font-weight:normal;
+    text-decoration: none;
+}*/
+
 
 img {
 	border: 0px solid #000000;
@@ -165,8 +193,9 @@ body {
 
 
 
-h1, h2, h3, h4, h5, h6 {
-	color:#666;
+h1, h1 a, h2, h3, h4, h5, h6 {
+	color:#666 !important;
+    text-decoration: none !important;
 }
 
 
@@ -175,21 +204,30 @@ pre, code {
 }
 
 
-a,strong {
+strong {
 	color: #333;
 }
 
 
+a,
 a:hover, 
 a:active {
-	color: #333;
+	color: #008080;
 }
 
 
 a:visited,
 a:link:visited {
-	color: #333;
+	color: #999988;
 }
+
+/*h1 a,
+h1 a:hover, 
+h1 a:active,
+h1 a:visited,
+h1 a:link:visited {
+    color:#666;
+}*/
 
 
 #footer, #menu {
@@ -200,4 +238,10 @@ a:link:visited {
 
 #footer a, #menu a {
 	color:#333;
+}
+
+.highlight { 
+    background-color: #efefef;
+    margin: 20px 0 20px 0; 
+    padding: 7px 7px 7px 10px; 
 }

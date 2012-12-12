@@ -15,31 +15,32 @@
 <meta name="revisit-after" content="7 Days" />
 <meta name="doc-class" content="Living Document" />
 <link rel="stylesheet" type="text/css" href="/css/stylesheet.css">
+<link rel="stylesheet" type="text/css" href="/css/pygments.css">
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
 <body>
     <div id="container">
     
         <div id="header">
-            <h1>{{ site.author }}</h1>
+            <h1><a href="/">{{ site.title }}</a></h1>
         </div>
-        
+        <!--
         <div id="menu" class="clear">
             <ul>
                 <li><a href="#about">About</a> \ </li>
                 <li><a href="#download">Download</a> \ </li>
                 <li><a href="#download">Installation</a> \ </li>
                 <li><a href="#examples">Examples</a> \ </li>
-                <li><a href="./reference/index.html" target="_blank">Reference</a></li>
-                <!-- <li><a href="#demos">Demos</a> \ </li> -->             
-                <!-- <li><a href="#misc">Misc</a> \ </li> -->
-                <!-- <li><a href="#images">Images</a> \ </li> -->
+                <li><a href="./reference/index.html" target="_blank">Reference</a> \ </li>
+                <li><a href="https://trac.pearswj.co.uk">Code</a></li>
             </ul>
         </div>
-
+        -->
         {{ content }}
 
+        <br class="clear" />
         <div id="footer">
-            <p>by {{ site.author }}, ##copyright##.</p>
+            <p>by {{ site.author.name }}.</p>
         </div>
     </div>
 </body>

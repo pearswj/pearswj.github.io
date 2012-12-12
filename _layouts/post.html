@@ -6,6 +6,7 @@ layout: layout
 
   <div id="about">
     <h2>{{ page.title }}</h2>
+    {{ page.date | date: "<p></br>%e %B %Y</p>" }}
     {{ content }}
   </div>
 

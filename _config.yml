@@ -1,3 +1,12 @@
-markdown: kramdown
+# using mrcaron/jekyll for redcarpet 2 compatability
+markdown: redcarpet
+redcarpet:
+  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "with_toc_data"]
+# superscript extension interferes with math
 pygments: true
-author: Will Pearson
+title: Will Pearson
+author:
+  name: Will Pearson
+  email: w.j.b.pearson@bath.ac.uk
+  twitter: pearswj
+  github: pearswj
