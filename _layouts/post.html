@@ -6,8 +6,25 @@ layout: layout
 
   <div id="about">
     <h2>{{ page.title }}</h2>
-    {{ page.date | date: "<p></br>%e %B %Y</p>" }}
+    {{ page.date | date: "<p class='date'></br>%e %B %Y</p>" }}
     {{ content }}
   </div>
+
+  <!-- post navigation, inspired by daring fireball -->
+  {% if page.previous.url or page.next.url %}
+  <br class="clear" />
+  <div id="PreviousNext">
+    <table>
+      <tbody>
+      {% if page.previous.url %}
+        <tr valign="top"><td align="right"><strong>Previous:</strong></td><td><a href="{{page.previous.url}}">{{page.previous.title}}</a></td></tr>
+      {% endif %}
+      {% if page.next.url %}
+        <tr valign="top"><td align="right"><strong>Next:</strong></td><td><a href="{{page.next.url}}">{{page.next.title}}</a></td></tr>
+      {% endif %}
+      </tbody>
+    </table>
+  </div>
+  {% endif %}
 
 </div>

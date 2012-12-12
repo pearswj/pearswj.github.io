@@ -77,6 +77,9 @@ body {
 }
 
 
+#PreviousNext {
+    margin-top:100px;
+}
 
 
 
@@ -117,8 +120,14 @@ h3 {
 
 p { 
 	font-size:1em;
+    line-height:19px;
 	width:90%;
 	margin-bottom:32px;
+}
+
+
+li p {
+    margin-bottom:0px;
 }
 
 
@@ -138,35 +147,6 @@ hr {
 }
 
 
-a {
-	text-decoration: underline;
-	font-weight: normal;
-}
-
-
-a:hover, 
-a:active {
-	text-decoration: underline;
-	font-weight: normal;
-}
-
-
-a:visited,
-a:link:visited {
-	text-decoration: underline;
-	font-weight: normal;
-}
-
-
-/*h1 a,
-h1 a:hover, 
-h1 a:active,
-h1 a:visited,
-h1 a:link:visited {
-	font-size:1em;
-	font-weight:normal;
-    text-decoration: none;
-}*/
 
 
 img {
@@ -195,7 +175,6 @@ body {
 
 h1, h1 a, h2, h3, h4, h5, h6 {
 	color:#666 !important;
-    text-decoration: none !important;
 }
 
 
@@ -209,30 +188,53 @@ strong {
 }
 
 
-a,
-a:hover, 
-a:active {
-	color: #008080;
+p.date {
+    color:#888;
 }
 
+
+#PreviousNext strong {
+    margin-right: 10px;
+    color:#666
+}
+
+/* link colors, from daring fireball... */
+a,
+a:link {
+	text-decoration: none;
+	color: #008080;
+	border-color: #999;
+	border-width: 0 0 1px 0;
+	border-style: none none solid none;
+	padding: 3px 0px 2px 0px;
+	background-color: inherit;
+	}
 
 a:visited,
 a:link:visited {
 	color: #999988;
-}
+	border-color: #999;
+	border-width: 0 0 1px 0;
+	border-style: none none dashed none;
+	padding: 3px 0px 2px 0px;
+	background-color: inherit;
+	}
+a:active,
+a:hover {
+	color: #008080;
+	text-decoration: none;
+	background-color: #efefef;
+	border-style: none;
+	}
 
-/*h1 a,
-h1 a:hover, 
-h1 a:active,
-h1 a:visited,
-h1 a:link:visited {
-    color:#666;
-}*/
+a em {
+	padding-bottom: 2px; /* Hack for WebKit; otherwise the underscore padding is 0 */
+	}
 
 
 #footer, #menu {
 	background-color:#fff;
-	color:#333;
+	color:#666;
 }
 
 
@@ -245,3 +247,4 @@ h1 a:link:visited {
     margin: 20px 0 20px 0; 
     padding: 7px 7px 7px 10px; 
 }
+
