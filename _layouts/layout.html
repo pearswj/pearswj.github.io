@@ -40,7 +40,9 @@
 
         <br class="clear" />
         <div id="footer">
-            <p>by {{ site.author.name }}.</p>
+            <p>By {{ site.author.name }}.</p>
+            <p class="date">Last updated at {% git_date %H:%M on %A, %e %B %Y%}
+            (rev <a href="https://trac.pearswj.co.uk/changeset/{% git_sha 40 %}/jekyll"><code>{% git_sha %}</code></a>).</p>
         </div>
     </div>
 </body>
