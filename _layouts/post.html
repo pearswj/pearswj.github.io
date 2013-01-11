@@ -14,13 +14,13 @@ layout: layout
   {% if page.previous.url or page.next.url %}
   <br class="clear" />
   <div id="PreviousNext">
-    <table>
+    <table cellspacing="6">
       <tbody>
       {% if page.previous.url %}
-        <tr valign="top"><td align="right"><strong>Previous:</strong></td><td><a href="{{page.previous.url}}">{{page.previous.title}}</a></td></tr>
+        <tr valign="top"><td align="right">Previous:</td><td><a href="{{page.previous.url}}">{{page.previous.title}}</a></td></tr>
       {% endif %}
       {% if page.next.url %}
-        <tr valign="top"><td align="right"><strong>Next:</strong></td><td><a href="{{page.next.url}}">{{page.next.title}}</a></td></tr>
+        <tr valign="top"><td align="right">Next:</td><td><a href="{{page.next.url}}">{{page.next.title}}</a></td></tr>
       {% endif %}
       </tbody>
     </table>

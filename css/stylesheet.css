@@ -88,6 +88,12 @@ body {
 
 
 
+#Posts {
+    margin-top:50px;
+}
+
+
+
 
 /* Headings */
 
@@ -158,6 +164,7 @@ blockquote {
     border-left: 3px dotted #ddd;
     padding-left: 11px;
     color: #555;
+    font-style: italic;
 }
 
 
