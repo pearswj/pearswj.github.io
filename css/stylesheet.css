@@ -45,7 +45,8 @@ body {
 #download,
 #examples,
 #demos,
-#misc {
+#misc,
+#Posts {
 	width:480px;
 	float:left;
 	margin-right:24px;
@@ -89,7 +90,8 @@ body {
 
 
 #Posts {
-    margin-top:50px;
+    /*margin-top:50px;*/
+    margin-left:-6px;
 }
 
 

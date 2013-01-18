@@ -14,7 +14,7 @@ layout: layout
     <table cellspacing="6">
       <tbody>
 {% for post in site.posts %}
-        <tr valign="top"><td align="right">{{ post.date | date: "%e %B %Y" }}</td><td><a href="{{ post.url }}">{{ post.title }}</a></td></tr>
+        <tr valign="top"><td width="45%">{{ post.date | date: "%e %B %Y" }}</td><td><a href="{{ post.url }}">{{ post.title }}</a></td></tr>
 {% endfor %}
       </tbody>
     </table>
