@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Discrete Curvature Operators for Manifolds
+published: false
 ---
 First a funky PDF plot of mean curvatures on a torus. Using `openRaw(PDF, "example.pdf")` in Processing.
 
