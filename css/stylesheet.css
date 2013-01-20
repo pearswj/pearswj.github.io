@@ -91,7 +91,7 @@ body {
 
 #Posts {
     /*margin-top:50px;*/
-    margin-left:-6px;
+    margin-left:-2px;
 }
 
 
@@ -167,6 +167,15 @@ blockquote {
     padding-left: 11px;
     color: #555;
     font-style: italic;
+}
+
+tr {
+    line-height: 19px;
+}
+
+td.datetd {
+    white-space: nowrap;
+    padding-right: 5px;
 }
 
 

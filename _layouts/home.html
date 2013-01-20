@@ -11,10 +11,10 @@ layout: layout
   <!-- post navigation, inspired by daring fireball -->
   <br class="clear" />
   <div id="Posts">
-    <table cellspacing="6">
+    <table>
       <tbody>
 {% for post in site.posts %}
-        <tr valign="top"><td width="45%">{{ post.date | date: "%e %B %Y" }}</td><td><a href="{{ post.url }}">{{ post.title }}</a></td></tr>
+        <tr><td class="datetd">{{ post.date | date: "%e %B %Y" }} </td><td><a href="{{ post.url }}">{{ post.title }}</a></td></tr>
 {% endfor %}
       </tbody>
     </table>
