@@ -137,6 +137,19 @@ li p {
 }
 
 
+ul {
+	margin-bottom:32px;
+}
+
+
+
+ul ul {
+    padding-left: 20px;
+    margin-bottom: 0;
+}
+
+
+
 pre, code {  
     font-family: Menlo, "Courier New", monospace;
     font-size: 11px;
