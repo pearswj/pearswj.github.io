@@ -4,31 +4,35 @@ title: Building Plex Home Theatre on Arch Linux (Intel Atom 330)
 published: true
 ---
 
-After reading [this post](http://forums.plexapp.com/index.php/topic/54497-build-plexht-from-source/) (PlexPass required) I thought I'd have a go building PlexHT on my Arch box (despite having just tweaked [pyplex to use mplayer](https://github.com/pearswj/pyplex/tree/mplayer) -- the perfect interfaceless setup). It's worth mentioning that I had PMC running previously so the majority of dependencies were already dealt with. In my experience, installing xbmc first usually takes care of this!
+*Updated 25/01/2013: ffmpeg workaround no longer necessary.*  
+*Updated 04/02/2013: libcec workaround no longer necessary.*
 
-You will also need to have an [X window system](https://wiki.archlinux.org/index.php/Xorg) installed.
 
-The Plex Home Theatre source is available at [Github](https://github.com/plexinc/plex-home-theater-public).
+After reading [this post](http://forums.plexapp.com/index.php/topic/54497-build-plexht-from-source/) (PlexPass required) I thought I'd have a go building PlexHT on my Arch box (despite having just tweaked [pyplex to use mplayer](https://github.com/pearswj/pyplex/tree/mplayer) -- the perfect interfaceless setup). It's worth mentioning that I had PMC running previously so the majority of dependencies were already dealt with. In my experience, installing xbmc first usually takes care of this! You will also need to have an [X window system](https://wiki.archlinux.org/index.php/Xorg) installed.
 
-Following the advice given in [this post](http://forums.plexapp.com/index.php/topic/57397-build-plex-home-theater-on-debian-wheezy/) I created the following directory structure:
+[This post](http://forums.plexapp.com/index.php/topic/57397-build-plex-home-theater-on-debian-wheezy/) is also worth a quick read before getting started.
 
-* PlexHT
-	* source
-	* build
 
-Next run cmake:
+Starting in a fresh directory, I grabbed the Plex Home Theatre source:
 
 ``` bash
+git clone git@github.com:plexinc/plex-home-theater-public.git source
+```
+
+Next, I created a 'build' directory and ran cmake from inside it:
+
+``` bash
+mkdir build && cd build
 cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=/opt/plexhometheater ../source
 ```
 
-A number of dependencies were highlighted at this stage. Install the following packages via pacman and re-run cmake.
+A number of dependencies were highlighted at this stage. I installed the following packages via pacman and re-ran cmake.
 
 * libplist
 * libshairport
 * libcec
 
-Now the start the build:
+Now to start the build:
 
 ``` bash
 make -j2
@@ -37,12 +41,10 @@ make -j2
 ~~The first error that popped up revealed an issue with the ffmpeg implementation.~~ *Fixed in [fa31770c8c](https://github.com/plexinc/plex-home-theater-public/commit/fa31770c8ced06acdf2b9898d73332944b7a7a74).*
 
 
-~~After restarting the build,~~ The second error that I received pointed to the file: *xbmc/peripherals/devices/PeripheralCecAdapter.cpp*.
-
-Again I plugged the error message into Google and found and old [pull request](https://github.com/Pulse-Eight/libcec/pull/46) in the libcec repository. Seeing that this bug had been fixed I checked the version of libcec in the Arch repos and discovered that it is out-of-date. I installed [libcec-git](https://aur.archlinux.org/packages/libcec-git/) from AUR instead.
+~~After restarting the build, the second error that I received pointed to the file: *xbmc/peripherals/devices/PeripheralCecAdapter.cpp*.~~ *The [libcec](https://www.archlinux.org/packages/community/x86_64/libcec/) package is now up-to-date -- problem solved.*
 
 
-Once again continue the build and it should complete without any further errors. Now you can install PlexHT: 
+Now you can install PlexHT: 
 
 ``` bash
 sudo make install
