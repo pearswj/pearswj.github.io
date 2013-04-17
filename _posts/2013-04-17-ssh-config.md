@@ -1,7 +1,7 @@
 ---
 layout: post
 title: SSH config
-tags: linux, ssh
+tags: [linux, ssh]
 ---
 
 
