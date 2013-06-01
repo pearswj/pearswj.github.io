@@ -9,5 +9,5 @@ I am a postgrad  at the [University of Bath][1] studying for an MPhil by researc
 [2]: http://people.bath.ac.uk/ps281/teaching/digital_architectonics/
 [Github]: http://github.com/{{ site.author.github }}
 [Twitter]: http://twitter.com/{{ site.author.twitter }}
-[trac]: https://trac.pearswj.co.uk
+[trac]: https://trac.pearswj.co.uk/browser/processing
 [e-mail]: mailto:{{ site.author.email }}
