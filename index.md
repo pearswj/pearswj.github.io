@@ -2,7 +2,7 @@
 layout: home
 ---
 
-I am a postgrad  at the [University of Bath][1] studying for an MPhil by research in the field of [Digital Architectonics][2].  Please feel free to contact me by [e-mail][].  Some of my current code can be found on my [trac][].  You can also view my social coding and (infrequent) musings on [Github][] and [Twitter][] respectively.
+I am a postgrad  at the [University of Bath][1] studying for an MPhil by research in the field of [Digital Architectonics][2].  Please feel free to contact me by [e-mail][].  Some of my software projects can be found on [Github][].  You can also find my (infrequent) musings on [Twitter][].
 
 
 [1]: http://bath.ac.uk
