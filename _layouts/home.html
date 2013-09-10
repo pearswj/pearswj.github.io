@@ -14,7 +14,7 @@ layout: layout
     <table>
       <tbody>
 {% for post in site.posts %}
-        <tr><td class="datetd">{{ post.date | date: "%e %B %Y" }} </td><td><a href="{{ post.url }}">{{ post.title }}</a></td></tr>
+        <tr><td class="datetd">{{ post.date | date: "%e %B %Y" }} </td><td><a href="{{ post.url | remove:'.html' | escape }}">{{ post.title }}</a></td></tr>
 {% endfor %}
       </tbody>
     </table>
