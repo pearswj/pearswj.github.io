@@ -1,70 +1,54 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<title>{{ page.title }}</title>
-<meta name="description" content="A library for the Processing programming environment" />
-<meta name="keywords" content="processing.org, library, ##library.keywords##" />
-<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-<meta http-equiv="Content-Language" content="en-us" />
-<meta name="ROBOTS" content="index,follow,archive" />
-<meta http-equiv="imagetoolbar" content="false" />
-<meta name="MSSmartTagsPreventParsing" content="true" />
-<meta name="author" content="Will Pearson" />
-<meta name="Rating" content="General" />
-<meta name="revisit-after" content="7 Days" />
-<meta name="doc-class" content="Living Document" />
-<link rel="stylesheet" type="text/css" href="/css/stylesheet.css">
-<link rel="stylesheet" type="text/css" href="/css/pygments.css">
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<!-- Google Analytics -->
-<script type="text/javascript">
+  <title>{{ page.title }}</title>
+  <meta name="author" content="Will Pearson" />
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-37094763-1']);
-  _gaq.push(['_trackPageview']);
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="/css/stylesheet.css">
+  <link rel="stylesheet" type="text/css" href="/css/pygments.css">
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+  <!-- MathJax -->
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-</script>
 </head>
 <body>
-    <div id="container">
-    
-        <div id="header">
-            <h1><a href="/">{{ site.title }}</a></h1>
-        </div>
-        <!--
-        <div id="menu" class="clear">
-            <ul>
-                <li><a href="#about">About</a> \ </li>
-                <li><a href="#download">Download</a> \ </li>
-                <li><a href="#download">Installation</a> \ </li>
-                <li><a href="#examples">Examples</a> \ </li>
-                <li><a href="./reference/index.html" target="_blank">Reference</a> \ </li>
-                <li><a href="https://trac.pearswj.co.uk">Code</a></li>
-            </ul>
-        </div>
-        -->
-        {{ content }}
-
-        <br class="clear" />
-        <div id="footer">
-            <p>By {{ site.author.name }}.</p>
-            <p class="date">
-            Built and deployed using
-            <a href="http://jekyllrb.com">Jekyll</a>
-            and
-            <a href="http://pages.github.com">GitHub Pages</a>.
-            <br />
-            View this page on <a href="https://github.com/pearswj/pearswj.github.io/tree/master/{{ page.path }}">GitHub</a>
-            (<a href="https://raw.github.com/pearswj/pearswj.github.io/master/{{ page.path }}"><code>raw</code></a>).
-            </p>
-        </div>
+  <div id="container">
+  
+    <div id="header">
+      <h1><a href="/">{{ site.title }}</a></h1>
     </div>
+
+    {{ content }}
+
+    <br class="clear" />
+    <div id="footer">
+      <p>By {{ site.author.name }}.</p>
+      <p class="date">
+      Built and deployed using
+      <a href="http://jekyllrb.com">Jekyll</a>
+      and
+      <a href="http://pages.github.com">GitHub Pages</a>.
+      <br />
+      View this page on <a href="https://github.com/pearswj/pearswj.github.io/tree/master/{{ page.path }}">GitHub</a>
+      (<a href="https://raw.github.com/pearswj/pearswj.github.io/master/{{ page.path }}"><code>raw</code></a>).
+      </p>
+    </div>
+  </div>
+
+<!-- Google Analytics -->
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-37094763-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
 </body>
 </html>
