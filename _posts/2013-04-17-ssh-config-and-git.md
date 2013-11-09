@@ -1,6 +1,6 @@
 ---
 layout: post
-title: SSH config
+title: SSH config and Git
 tags: 
   - linux
   - ssh
