@@ -169,9 +169,9 @@ pre {
 
 hr {
 	border:0;
-	background-color: #ddd;
-	height:1px;
-	margin-top:24px;
+	height: 20px;
+	background: url(/images/divider.png) no-repeat center 2px;
+	text-align: center;
 	margin-bottom:24px;
 }
 
