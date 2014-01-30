@@ -170,7 +170,7 @@ pre {
 hr {
 	border:0;
 	height: 20px;
-	background: url(/images/divider.png) no-repeat center 2px;
+	background: url(/images/divider.png) no-repeat left 1px;
 	text-align: left;
 	margin-bottom:24px;
 }
