@@ -136,6 +136,9 @@ li p {
     margin-bottom:0px;
 }
 
+li {
+    margin-bottom:10px;
+}
 
 ul {
 	margin-bottom:32px;
