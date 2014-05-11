@@ -1,0 +1,3 @@
+[submodule "halfedge"]
+	path = halfedge
+	url = git://github.com/pearswj/mesh.js.git
