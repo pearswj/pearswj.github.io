@@ -4,7 +4,7 @@ if (typeof S3BL_IGNORE_PATH == 'undefined' || S3BL_IGNORE_PATH!=true) {
   var S3BL_IGNORE_PATH = false;
 }
 
-var BUCKET_URL = 'http://rcd-builds-data.s3-eu-west-1.amazonaws.com/';
+var BUCKET_URL = 'http://wjp-builds-data.s3-eu-west-1.amazonaws.com/';
 
 jQuery(function($) {
   var s3_rest_url = createS3QueryUrl();
