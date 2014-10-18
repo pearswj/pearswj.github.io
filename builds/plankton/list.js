@@ -87,7 +87,7 @@ function prepareTable(items) {
   //var files = info.files.concat(info.directories)
   //  , prefix = info.prefix
   //  ;
-  var cols = [ 33, 12, 16, 24, 15 ];
+  var cols = [ 29, 10, 12, 25, 16 ];
   var content = [];
   content.push(padRight('Date', cols[0]) + padRight('Number', cols[1]) + padRight('SHA', cols[2]) + padRight('Artifact', cols[3]) + 'Branch Ref \n');
   content.push(new Array(cols[0] + cols[1] + cols[2] + cols[3] + cols[4] + 4).join('-') + '\n');
