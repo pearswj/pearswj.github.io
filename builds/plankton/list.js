@@ -16,6 +16,10 @@ for (var i = 0; i < 20; i++) {
 
   var build = json.builds[i]
 
+  if (build.finished_at == null) {
+    continue;
+  }
+
   item.date = build.finished_at;
   item.number = build.number;
   item.ci_url = 'https://s3.amazonaws.com/archive.travis-ci.org/jobs/' + build.job_ids[0] + '/log.txt';
@@ -32,7 +36,7 @@ for (var i = 0; i < 20; i++) {
 
   item.ref = commit.branch;
   if (build.pull_request == true) {
-    item.ref = 'pr/' + build.pull_request_number;
+    item.ref = '#' + build.pull_request_number;
   }
 
   items.push(item);
@@ -57,7 +61,7 @@ for (var i = 0; i < 20; i++) {
 function prepareTable(items) {
   var cols = [ 29, 10, 12, 25, 16 ];
   var content = [];
-  content.push(padRight('Date', cols[0]) + padRight('Number', cols[1]) + padRight('SHA', cols[2]) + padRight('Artifact', cols[3]) + 'Branch Ref \n');
+  content.push(padRight('Date', cols[0]) + padRight('Number', cols[1]) + padRight('SHA', cols[2]) + padRight('Artifact', cols[3]) + 'Branch\n');
   content.push(new Array(cols[0] + cols[1] + cols[2] + cols[3] + cols[4] + 4).join('-') + '\n');
 
 
