@@ -1,77 +1,47 @@
+var xhr = new XMLHttpRequest();
+xhr.open('get', 'https://api.travis-ci.org/repos/pearswj/Plankton/builds', false);
+xhr.setRequestHeader('User-Agent', 'MyClient/1.0.0');
+xhr.setRequestHeader('Accept', 'application/vnd.travis-ci.2+json');
+xhr.send(null);
+
+var json = JSON.parse(xhr.response);
+
 var job = "plankton";
-var d = [];
 
 $('#listing').html('<pre>Loading...</pre>');
 
-$.getJSON("http://ec2-54-77-171-109.eu-west-1.compute.amazonaws.com/job/plankton/api/json", function (data) {
-    var items = [];
-    $.each(data.builds.slice(0,50), function(key, value) {
-        var line = value.number;
-        var build = {};
-        build.number = value.number;
-        build.jenkins_url = value.url;
-    
-        $.ajaxSetup({ // async weirdness
-          async: false
-        });
-    
-        $.getJSON(value.url + "/api/json", function (build_data) {
-            if (build_data.result != "SUCCESS") return true;
-            //build.date = build_data.id;
-            build.date = new Date(build_data.timestamp).toISOString();
-            $.each(build_data.actions, function (i, action) {
-              if (action["parameters"]) {
-                line = line + " / " + action.parameters[2].value;
-                build.ref = action.parameters[2].value;
-              }
-            
-              if (action["buildsByBranchName"]) {
-                //line = line + ": " + Object.keys(action.buildsByBranchName).join(", ");
-                for (branch in action.buildsByBranchName) {
-                branch = action.buildsByBranchName[branch];
-                //line = line + ", " + branch['buildNumber'];
-                  if (branch.buildNumber == value.number) {
-                    line = line + " / <a href='https://github.com/Dan-Piker/Plankton/commit/" + branch.revision.SHA1 + "'>" + branch.revision.SHA1.substring(0,7) + "</a>";
-                    build.sha = branch.revision.SHA1;
-                    build.sha_short = build.sha.slice(0,7);
-                    build.github_url = "https://github.com/Dan-Piker/Plankton/commit/" + build.sha;
-                    break;
-                  }
-                }
-              }
-            });
-            
-            var file = job + "-" + value.number + ".zip";
-            line = line + " / <a href='http://wjp-builds-data.s3-eu-west-1.amazonaws.com/" + file + "'>" + file + "</a>";
-            build.artifact = file;
-            build.artifact_url = "http://wjp-builds-data.s3-eu-west-1.amazonaws.com/" + file;
-            
-            //items.push("<li>" + line + "</li>");
-            items.push(build);
-        });
-    });
+var items = [];
+for (var i = 0; i < 20; i++) {
+  var item = {};
 
-  /*$( "<ul/>", {
-    "class": "my-new-list",
-    html: items.join( "" )
-  }).appendTo( "body" );*/
-  
-  //d = items;
+  var build = json.builds[i]
+
+  item.date = build.finished_at;
+  item.number = build.number;
+  item.ci_url = 'https://s3.amazonaws.com/archive.travis-ci.org/jobs/' + build.job_ids[0] + '/log.txt';
+
+  var commit = json.commits[i]
+
+  item.sha = commit.sha;
+  item.sha_short = item.sha.slice(0,7);
+  item.github_url = commit.compare_url;
+  item.message = commit.message;
+
+  item.artifact = job + "-" + item.number + ".zip";
+  item.artifact_url = 'https://s3-eu-west-1.amazonaws.com/erdos/builds/' + item.artifact
+
+  item.ref = commit.branch;
+  if (build.pull_request == true) {
+    item.ref = 'pr/' + build.pull_request_number;
+  }
+
+  items.push(item);
+}
+
   $('#listing').html('');
   document.getElementById('listing').innerHTML = '<pre>' + prepareTable(items) + '</pre>';
-  
-  //var div = document.getElementById('listing');
-  //div.innerHTML = div.innerHTML + items.join("");
-});
 
-// info is object like:
-// {
-//    files: ..
-//    directories: ..
-//    prefix: ...
-// } 
-//
-// it should be like:
+// items is object like:
 // [
 //   {
 //      number: ..
@@ -81,12 +51,10 @@ $.getJSON("http://ec2-54-77-171-109.eu-west-1.compute.amazonaws.com/job/plankton
 //      github_url: ..
 //      artifact: ..
 //      artifact_url: ..
-//   }
+//   },
+//   ...
 // ]
 function prepareTable(items) {
-  //var files = info.files.concat(info.directories)
-  //  , prefix = info.prefix
-  //  ;
   var cols = [ 29, 10, 12, 25, 16 ];
   var content = [];
   content.push(padRight('Date', cols[0]) + padRight('Number', cols[1]) + padRight('SHA', cols[2]) + padRight('Artifact', cols[3]) + 'Branch Ref \n');
@@ -94,7 +62,6 @@ function prepareTable(items) {
 
 
   jQuery.each(items, function(idx, item) {
-    d.push(item);
     var row = renderRow(item, cols);
     content.push(row + '\n');
   });
@@ -105,9 +72,8 @@ function prepareTable(items) {
 function renderRow(item, cols) {
   var row = '';
   row += padRight(item.date, cols[0]);
-  row += padRightUrl(item.number, item.jenkins_url, cols[1]);
-  //row += padRight('<a href="' + item.github_url + '">' + item.sha_short + '</a>', cols[2]);
-  row += padRightUrl(item.sha_short, item.github_url, cols[2]);
+  row += padRightUrl(item.number, item.ci_url, cols[1]);
+  row += padRightUrl(item.sha_short, item.github_url, cols[2], item.message);
   row += padRightUrl(item.artifact, item.artifact_url, cols[3]);
   row += padRight(item.ref, cols[4]) + '  ';
   return row;
@@ -124,17 +90,22 @@ function padRight(padString, length) {
   return str;
 }
 
-function padRightUrl(padString, padUrl, length) {
+function padRightUrl(padString, padUrl, length, title) {
   var str = String(padString).slice(0, length-3);
   if (padString.length > str.length) {
     str += '...';
   }
   var len = str.length;
-  str = '<a href="' + padUrl + '">' + str + '</a>'
+  if (title) {
+    title = ' title="' + title + '" ';
+  }
+  else {
+    title = '';
+  }
+  str = '<a href="' + padUrl + '"' + title + '>' + str + '</a>'
   while (len < length) {
     str = str + ' ';
     len++;
   }
-  //str = '<a href="' + padUrl + '">' + str + '</a>'
   return str;
 }
