@@ -1,3 +1,5 @@
+$('#listing').html('<pre>Loading...</pre>');
+
 var xhr = new XMLHttpRequest();
 xhr.open('get', 'https://api.travis-ci.org/repos/pearswj/Plankton/builds', false);
 xhr.setRequestHeader('User-Agent', 'MyClient/1.0.0');
@@ -7,8 +9,6 @@ xhr.send(null);
 var json = JSON.parse(xhr.response);
 
 var job = "plankton";
-
-$('#listing').html('<pre>Loading...</pre>');
 
 var items = [];
 for (var i = 0; i < 20; i++) {
