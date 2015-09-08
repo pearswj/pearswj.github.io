@@ -1,0 +1,27 @@
+
+<html>
+<head>
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="centered">
+    <h1>Compat.exe</h1>
+  </div>
+
+  <p class="centered">
+    Checks compatibility between plugin.dll and api.dll (.NET). Based on <a href="http://www.mono-project.com/Cecil/">Mono.Cecil</a>.
+	<br/><br/><br/>
+  <code>
+    Usage: [mono] Compat.exe [-q | --quiet | --debug] &lt;assembly&gt; &lt;reference&gt;...
+  </code>
+  <br/><br/><br/>
+	CI builds below. Proper releases available <a href="http://github.com/mcneel/compat/releases/">here</a>.
+  </p>
+
+  <div id="listing" class="centered"></div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="list.js"></script>
+</body>
+</html>
