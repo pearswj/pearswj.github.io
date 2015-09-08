@@ -37,7 +37,7 @@ for (var i = 0; i < max; i++) {
   item.message = commit.message;
 
   item.artifact = job + "-" + item.number + ".zip";
-  item.artifact_url = 'https://s3-eu-west-1.amazonaws.com/erdos/builds/' + job + item.artifact
+  item.artifact_url = 'https://s3-eu-west-1.amazonaws.com/erdos/builds/' + job + '/' + item.artifact
 
   item.ref = commit.branch;
   if (build.pull_request == true) {
