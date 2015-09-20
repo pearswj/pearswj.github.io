@@ -1,7 +1,7 @@
 $('#listing').html('<pre>Loading...</pre>');
 
 var xhr = new XMLHttpRequest();
-xhr.open('get', 'https://api.travis-ci.org/repos/pearswj/Plankton/builds', false);
+xhr.open('get', 'https://api.travis-ci.org/repos/meshmash/Plankton/builds', false);
 xhr.setRequestHeader('User-Agent', 'MyClient/1.0.0');
 xhr.setRequestHeader('Accept', 'application/vnd.travis-ci.2+json');
 xhr.send(null);
@@ -32,7 +32,7 @@ for (var i = 0; i < 20; i++) {
   item.message = commit.message;
 
   item.artifact = job + "-" + item.number + ".zip";
-  item.artifact_url = 'https://s3-eu-west-1.amazonaws.com/erdos/builds/' + item.artifact
+  item.artifact_url = 'https://s3-eu-west-1.amazonaws.com/meshmash/builds/' + item.artifact
 
   item.ref = commit.branch;
   if (build.pull_request == true) {
