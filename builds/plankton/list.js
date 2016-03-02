@@ -16,7 +16,7 @@ for (var i = 0; i < 20; i++) {
 
   var build = json.builds[i]
 
-  if (build.finished_at == null) {
+  if (build.state != 'passed') {
     continue;
   }
 
