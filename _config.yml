@@ -9,3 +9,4 @@ author:
   twitter: pearswj
   github: pearswj
 permalink: /blog/:title.html
+include: ["_lib"]
