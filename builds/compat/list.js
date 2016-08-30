@@ -7,7 +7,7 @@ var api = "https://api.travis-ci.org/repos/" + repo + "/builds";
 
 var xhr = new XMLHttpRequest();
 xhr.open('get', api, false);
-xhr.setRequestHeader('User-Agent', 'MyClient/1.0.0');
+xhr.setRequestHeader('User-Agent', 'pearswj.co.uk');
 xhr.setRequestHeader('Accept', 'application/vnd.travis-ci.2+json');
 xhr.send(null);
 
@@ -21,13 +21,13 @@ for (var i = 0; i < max; i++) {
 
   var build = json.builds[i]
 
-  if (build.finished_at == null) {
+  if (build.finished_at == null || build.state != "passed") {
     continue;
   }
 
   item.date = build.finished_at;
   item.number = build.number;
-  item.ci_url = 'https://s3.amazonaws.com/archive.travis-ci.org/jobs/' + build.job_ids[0] + '/log.txt';
+  item.ci_url = 'https://api.travis-ci.org/jobs/' + build.job_ids[0] + '/log.txt?deansi=true';
 
   var commit = json.commits[i]
 
@@ -37,6 +37,12 @@ for (var i = 0; i < max; i++) {
   item.message = commit.message;
 
   item.artifact = job + "-" + item.number + ".zip";
+
+  // if build was a tag the artifact will be job-tag.zip
+  if (commit.branch == commit.compare_url.split("/").pop()) { // seems to do the trick!
+      item.artifact = job + "-" + commit.branch + ".zip";
+  }
+
   item.artifact_url = 'https://s3-eu-west-1.amazonaws.com/erdos/builds/' + job + '/' + item.artifact
 
   item.ref = commit.branch;
