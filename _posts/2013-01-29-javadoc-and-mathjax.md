@@ -29,7 +29,7 @@ public PVector laplacianSmoothing() { ...
 ```
 
 The math in this comment will be formatted as:
->\\[\bar{x}_{i}= \frac{1}{N} \sum_{j=1}\^{N}x_j\\]
+>\\[\bar{x}_{i}= \frac{1}{N} \sum\_{j=1}^{N}x\_j\\]
 >Where \\( N \\) is the number of adjacent vertices to node \\( i \\) and \\( \bar{x}_i \\) is the new position for node \\( x_i \\).
 
 On a side note, the LaTeX for the equation above was lifted directly from the Wikipedia page on Laplacian Smoothing. I found it in the `alt` attribute of the `img` tag (the equations are stored as PNGs). A nice little time-saver!
