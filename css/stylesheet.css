@@ -224,6 +224,10 @@ h1, h1 a, h2, h3, h4, h5, h6 {
 	color:#666 !important;
 }
 
+h1 a svg path {
+	fill: #666;
+}
+
 
 pre, code {  
 	color: #000000;
